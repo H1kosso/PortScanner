@@ -8,34 +8,34 @@ add_executable(PortScanner main.cpp
         Headers.h
 )
 
-# Znajdź i dołącz WinSock (ws2_32)
+# WinSock (ws2_32)
 if (WIN32)
     find_library(WS2_32_LIBRARY ws2_32)
     if (WS2_32_LIBRARY)
         target_link_libraries(PortScanner PRIVATE ${WS2_32_LIBRARY}  -lwsock32)
 
     else ()
-        message(FATAL_ERROR "Biblioteka WinSock (ws2_32) nie została znaleziona.")
+        message(FATAL_ERROR "WinSock not found.")
     endif ()
 endif ()
 
 
-# Znajdź i dołącz Boost
+# Boost
 find_package(Boost REQUIRED)
 if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(PortScanner PRIVATE ${Boost_LIBRARIES})
 else()
-    message(FATAL_ERROR "Biblioteka Boost nie została znaleziona.")
+    message(FATAL_ERROR "Boost not found.")
 endif()
 
 
 
-# Znajdź i dołącz Asio
+# Asio
 find_package(Asio REQUIRED)
 if (Asio_FOUND)
     target_link_libraries(PortScanner PRIVATE asio)
 else ()
-    message(FATAL_ERROR "Biblioteka Asio nie została znaleziona;.")
+    message(FATAL_ERROR "Asio not found.")
 endif ()
 

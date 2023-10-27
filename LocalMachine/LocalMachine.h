@@ -1,7 +1,3 @@
-//
-// Created by Marcin on 27.10.2023.
-//
-
 #ifndef PORTSCANNER_LOCALMACHINE_H
 #define PORTSCANNER_LOCALMACHINE_H
 

@@ -1,7 +1,3 @@
-//
-// Created by Marcin on 27.10.2023.
-//
-
 #ifndef PORTSCANNER_HEADERS_H
 #define PORTSCANNER_HEADERS_H
 
