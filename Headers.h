@@ -9,7 +9,12 @@
 #include <optional>
 #include <winsock2.h>
 #include <ws2tcpip.h>
-
+#include <vector>
+#include <utility>
+#include <coroutine>
 #include "LocalMachine/LocalMachine.h"
+#include "SubnetScan/SubnetScanner.h"
+
+
 
 #endif //PORTSCANNER_HEADERS_H

@@ -6,6 +6,8 @@ add_executable(PortScanner main.cpp
         LocalMachine/LocalMachine.cpp
         LocalMachine/LocalMachine.h
         Headers.h
+        SubnetScan/SubnetScanner.cpp
+        SubnetScan/SubnetScanner.h
 )
 
 # WinSock (ws2_32)

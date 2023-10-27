@@ -1,7 +1,7 @@
 #include "LocalMachine.h"
 
 LocalMachine::LocalMachine() {
-    ip_address = boost::asio::ip::address::from_string(findLocalMachineIPAddress());
+    m_ip_address = boost::asio::ip::address::from_string(findLocalMachineIPAddress());
 }
 
 std::string LocalMachine::findLocalMachineIPAddress() {

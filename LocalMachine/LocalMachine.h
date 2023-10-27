@@ -7,9 +7,9 @@ class LocalMachine {
 public:
     LocalMachine();
 
-    std::string getLocalIPAddress() { return ip_address.to_string(); };
+    std::string getLocalIPAddress() { return m_ip_address.to_string(); };
 private:
-    boost::asio::ip::address ip_address;
+    boost::asio::ip::address m_ip_address;
 private:
     static std::string findLocalMachineIPAddress();
 };
