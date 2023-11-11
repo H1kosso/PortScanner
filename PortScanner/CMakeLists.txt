@@ -4,18 +4,23 @@ project(PortScanner VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network)
 
 qt_standard_project_setup()
 
 qt_add_executable(appPortScanner
     main.cpp
+    LocalMachine.h
+    LocalMachine.cpp
+    IPOperations.h
 )
 
 qt_add_qml_module(appPortScanner
     URI PortScanner
     VERSION 1.0
     QML_FILES Main.qml
+    SOURCES LocalMachine.h LocalMachine.cpp
+    SOURCES IPOperations.h
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -31,6 +36,7 @@ set_target_properties(appPortScanner PROPERTIES
 
 target_link_libraries(appPortScanner
     PRIVATE Qt6::Quick
+    Qt6::Network
 )
 
 include(GNUInstallDirs)
