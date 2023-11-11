@@ -5,20 +5,34 @@
 #include "SubnetScanner.h"
 //
 #include <utility>
-
+#include <thread>
 
 SubnetScanner::SubnetScanner(std::string subnet, unsigned int port, unsigned int startAddress, unsigned int endAddress)
         : m_subnet(std::move(std::move(subnet))), m_port(port), m_startAddress(startAddress),
           m_endAddress(endAddress) {}
 
+//void SubnetScanner::scanSubnet() {
+//    boost::asio::io_context io_context;
+//    for (auto i = m_startAddress; i <= m_endAddress; ++i) {
+//        std::string currentAddress = std::string(m_subnet) + "." + std::to_string(i);
+//        scanAddress(currentAddress, m_port);
+//    }
+//}
 void SubnetScanner::scanSubnet() {
     boost::asio::io_context io_context;
+    std::vector<std::thread> threads;
+
     for (auto i = m_startAddress; i <= m_endAddress; ++i) {
-        std::string currentAddress = std::string(m_subnet) + "." + std::to_string(i);
-        scanAddress(currentAddress, m_port);
+        std::string currentAddress = m_subnet + "." + std::to_string(i);
+        threads.emplace_back([this, currentAddress]() {
+            scanAddress(currentAddress, m_port);
+        });
+    }
+
+    for (auto& thread : threads) {
+        thread.join();
     }
 }
-
 
 void SubnetScanner::scanAddress(const std::string &address, int port) {
     boost::asio::io_context io_context;
