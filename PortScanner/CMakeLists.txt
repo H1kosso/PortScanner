@@ -21,6 +21,7 @@ qt_add_qml_module(appPortScanner
     QML_FILES Main.qml
     SOURCES LocalMachine.h LocalMachine.cpp
     SOURCES IPOperations.h
+    SOURCES IPOperations.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

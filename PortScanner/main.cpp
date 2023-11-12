@@ -6,21 +6,8 @@
 #include <QNetworkRequest>
 #include <QProcess>
 #include <QQmlApplicationEngine>
+#include "IPOperations.h"
 #include "LocalMachine.h"
-
-void checkIpAvailability(const QString &ip, int port = 80)
-{
-    QTcpSocket socket;
-
-    socket.connectToHost(ip, port);
-
-    if (socket.waitForConnected(3000)) // Czas oczekiwania na połączenie w milisekundach
-    {
-        qDebug() << "IP" << ip << "is reachable";
-    } else {
-        qDebug() << "IP" << ip << "is not reachable";
-    }
-}
 
 int main(int argc, char *argv[])
 {
